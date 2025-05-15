@@ -9,9 +9,10 @@ const Hero = ({ name = "Mukesh", role = "Web Developer & Designer" }) => {
       id="home"
       className="min-h-screen flex items-center pt-24 pb-16 bg-gradient-to-br from-[#f5f7fa] via-[#e4ecf3] to-[#dce2ea]"
     >
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 gap-10 items-center">
+        {/* Left: Text Content */}
         <motion.div
-          className="space-y-8"
+          className="space-y-8 order-2 sm:order-1"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -43,7 +44,7 @@ const Hero = ({ name = "Mukesh", role = "Web Developer & Designer" }) => {
             </Button>
           </div>
 
-          <div className="flex items-center gap-5 pt-6 ">
+          <div className="flex items-center gap-5 pt-6">
             {[
               {
                 href: "https://github.com/mukesh-2096",
@@ -74,7 +75,7 @@ const Hero = ({ name = "Mukesh", role = "Web Developer & Designer" }) => {
                 ),
               },
               {
-                href: "durgasaimukeshvantakula5764@gmail.com",
+                href: "mailto:durgasaimukeshvantakula5764@gmail.com",
                 label: "Email",
                 icon: (
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
@@ -96,13 +97,14 @@ const Hero = ({ name = "Mukesh", role = "Web Developer & Designer" }) => {
           </div>
         </motion.div>
 
+        {/* Right: Profile Image */}
         <motion.div
-          className="hidden md:flex justify-center"
+          className="flex justify-center sm:justify-end order-1 sm:order-2"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
         >
-          <div className="relative w-72 h-72 rounded-full overflow-hidden border-4 border-blue-500/30 shadow-xl">
+          <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-blue-500/30 shadow-xl">
             <img
               src={profileImg}
               alt="Profile"
