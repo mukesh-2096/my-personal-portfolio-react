@@ -77,7 +77,7 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       <div className={cn(
-        "md:hidden fixed inset-0 z-50 bg-background transition-transform duration-300 ease-in-out",
+        "md:hidden fixed inset-0 z-50 bg-white transition-transform duration-300 ease-in-out",
         mobileMenuOpen ? "translate-x-0" : "translate-x-full"
       )}>
         <div className="flex items-center justify-between p-4">
