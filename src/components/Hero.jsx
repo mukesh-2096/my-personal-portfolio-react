@@ -56,7 +56,7 @@ const Hero = ({ name = "Mukesh", role = "Web Developer & Designer" }) => {
                 ),
               },
               {
-                href: "www.linkedin.com/in/mukesh-vantakula",
+                href: "https://www.linkedin.com/in/mukesh-vantakula/",
                 label: "LinkedIn",
                 icon: (
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
