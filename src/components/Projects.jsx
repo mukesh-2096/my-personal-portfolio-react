@@ -36,7 +36,7 @@ const Projects = () => {
       description:
         "A responsive web application that features a real-time clock, stopwatch, and countdown timer—designed to help users keep track of time efficiently. Ideal for everyday use and built as a beginner-friendly project.",
       image:
-        "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&h=500",
+        "https://thumbs.dreamstime.com/b/alarm-clock-banner-retro-wooden-table-background-68049878.jpg",
       technologies: ["React", "Tailwind CSS"],
       liveUrl: "https://chronofusion.netlify.app/",
       githubUrl: "https://github.com/mukesh-2096/ChronoFusion"
