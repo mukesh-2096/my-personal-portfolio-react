@@ -9,9 +9,10 @@ const Hero = ({ name = "Mukesh", role = "Web Developer & Designer" }) => {
       id="home"
       className="min-h-screen flex items-center pt-24 pb-16 bg-gradient-to-br from-[#f5f7fa] via-[#e4ecf3] to-[#dce2ea]"
     >
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 gap-10 items-center">
+        {/* Left: Text Content */}
         <motion.div
-          className="space-y-8"
+          className="space-y-8 order-2 sm:order-1"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -31,19 +32,24 @@ const Hero = ({ name = "Mukesh", role = "Web Developer & Designer" }) => {
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2">
-            <Button size="lg" className="rounded-full bg-blue-600 text-white hover:bg-blue-500 shadow-sm">
-              Get in touch
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="rounded-full border-gray-400 text-gray-700 hover:bg-gray-100 shadow-sm"
-            >
-              View Projects
-            </Button>
+            <a href="#contact">
+              <Button size="lg" className="rounded-full bg-blue-600 text-white hover:bg-blue-500 shadow-sm">
+                Get in touch
+              </Button>
+            </a>
+
+            <a href="#projects">
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-full border-gray-400 text-gray-700 hover:bg-gray-100 shadow-sm"
+              >
+                View Projects
+              </Button>
+            </a>
           </div>
 
-          <div className="flex items-center gap-5 pt-6 ">
+          <div className="flex items-center gap-5 pt-6">
             {[
               {
                 href: "https://github.com/mukesh-2096",
@@ -56,7 +62,7 @@ const Hero = ({ name = "Mukesh", role = "Web Developer & Designer" }) => {
                 ),
               },
               {
-                href: "www.linkedin.com/in/mukesh-vantakula",
+                href: "https://www.linkedin.com/in/mukesh-vantakula/",
                 label: "LinkedIn",
                 icon: (
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
@@ -64,17 +70,17 @@ const Hero = ({ name = "Mukesh", role = "Web Developer & Designer" }) => {
                   </svg>
                 ),
               },
+              // {
+              //   href: "#",
+              //   label: "Twitter",
+              //   icon: (
+              //     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
+              //       <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+              //     </svg>
+              //   ),
+              // },
               {
-                href: "#",
-                label: "Twitter",
-                icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
-                  </svg>
-                ),
-              },
-              {
-                href: "durgasaimukeshvantakula5764@gmail.com",
+                href: "mailto:durgasaimukeshvantakula5764@gmail.com",
                 label: "Email",
                 icon: (
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
@@ -96,13 +102,14 @@ const Hero = ({ name = "Mukesh", role = "Web Developer & Designer" }) => {
           </div>
         </motion.div>
 
+        {/* Right: Profile Image */}
         <motion.div
-          className="hidden md:flex justify-center"
+          className="flex justify-center sm:justify-end order-1 sm:order-2"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
         >
-          <div className="relative w-72 h-72 rounded-full overflow-hidden border-4 border-blue-500/30 shadow-xl">
+          <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-blue-500/30 shadow-xl">
             <img
               src={profileImg}
               alt="Profile"

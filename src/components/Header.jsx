@@ -26,9 +26,14 @@ const Header = () => {
   return (
     <header
       className={cn(
-        'fixed top-0 w-full z-50 transition-all duration-300',
-        scrolled ? 'bg-background/90 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'
-      )}
+  'fixed top-0 w-full z-50 transition-all duration-300',
+  mobileMenuOpen
+    ? 'bg-white shadow-sm py-2'
+    : scrolled
+    ? 'bg-background/90 backdrop-blur-md shadow-sm py-2'
+    : 'bg-transparent py-4'
+)}
+
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         <a href="#home" className="text-2xl font-bold text-blue-600">Portfolio</a>
@@ -77,7 +82,7 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       <div className={cn(
-        "md:hidden fixed inset-0 z-50 bg-background transition-transform duration-300 ease-in-out",
+        "md:hidden fixed inset-0 z-50 bg-white transition-transform duration-300 ease-in-out",
         mobileMenuOpen ? "translate-x-0" : "translate-x-full"
       )}>
         <div className="flex items-center justify-between p-4">

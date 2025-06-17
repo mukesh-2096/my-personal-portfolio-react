@@ -17,7 +17,7 @@ const Projects = () => {
         "A full-stack e-commerce platform with payment integration, user authentication, and an admin dashboard.",
       image:
         "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&h=500",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+      technologies: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
       liveUrl: "#",
       githubUrl: "#"
     },
@@ -27,19 +27,19 @@ const Projects = () => {
         "A Kanban-style task management application with drag and drop functionality and team collaboration features.",
       image:
         "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&h=500",
-      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma"],
+      technologies: ["Next.js", "JavaScript", "Tailwind CSS"],
       liveUrl: "#",
       githubUrl: "#"
     },
     {
-      title: "Personal Finance Tracker",
+      title: "ChronoFusion",
       description:
-        "A responsive web application for tracking expenses, setting budgets, and visualizing spending patterns.",
+        "A responsive web application that features a real-time clock, stopwatch, and countdown timer—designed to help users keep track of time efficiently. Ideal for everyday use and built as a beginner-friendly project.",
       image:
         "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&h=500",
-      technologies: ["Vue.js", "Express", "PostgreSQL", "Chart.js"],
-      liveUrl: "#",
-      githubUrl: "#"
+      technologies: ["React", "Tailwind CSS"],
+      liveUrl: "https://chronofusion.netlify.app/",
+      githubUrl: "https://github.com/mukesh-2096/ChronoFusion"
     }
   ];
 

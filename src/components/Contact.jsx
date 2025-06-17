@@ -1,73 +1,98 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Button } from "../components/ui/Button";
 import { Input } from "./ui/Input";
 import { Textarea } from "../components/ui/Textarea";
 import { Card, CardContent } from "../components/ui/Card";
 
 const Contact = () => {
+  const [result, setResult] = useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending...");
+    const formData = new FormData(event.target);
+    formData.append("access_key", "0a82b97c-356c-4962-a6af-462b69cda3f8"); // Replace this
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully ✅");
+      event.target.reset();
+    } else {
+      console.error("Submission error:", data);
+      setResult(`Error: ${data.message}`);
+    }
+  };
+
   return (
     <section
-  id="contact"
-  className=" pt-24 pb-16 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-[#e4ecf3] via-[#e4ecf3] to-[#dce2ea]"
->
-
+      id="contact"
+      className="pt-24 pb-16 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-[#e4ecf3] via-[#e4ecf3] to-[#dce2ea]"
+    >
       <div className="section-container">
         <h2 className="text-4xl font-bold text-gray-900 text-center mb-12">Get In Touch</h2>
 
-        <p className="mt-4 text-lg  text-muted-foreground max-w-2xl">
+        <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
           Have a question or want to work together? Feel free to contact me!
         </p>
 
         <div className="grid md:grid-cols-2 gap-12 mt-12">
           <Card className="p-6">
             <CardContent className="p-0">
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={onSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium">Name</label>
-                    <Input id="name" placeholder="Your name" />
+                    <Input id="name" name="name" placeholder="Your name" required />
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="email" className="text-sm font-medium">Email</label>
-                    <Input id="email" type="email" placeholder="Your email" />
+                    <Input id="email" name="email" type="email" placeholder="Your email" required />
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <label htmlFor="subject" className="text-sm font-medium">Subject</label>
-                  <Input id="subject" placeholder="Subject" />
+                  <Input id="subject" name="subject" placeholder="Subject" required />
                 </div>
 
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-medium">Message</label>
                   <Textarea
                     id="message"
+                    name="message"
                     placeholder="Your message"
                     rows={6}
+                    required
                   />
                 </div>
 
-                <Button type="submit" className="w-full  bg-blue-600 text-white hover:bg-blue-500 shadow-sm">Send Message</Button>
+                <Button type="submit" className="w-full bg-blue-600 text-white hover:bg-blue-500 shadow-sm">
+                  Send Message
+                </Button>
+
+                <p className="text-center text-sm text-muted-foreground">{result}</p>
               </form>
             </CardContent>
           </Card>
 
+          {/* Right side content (Contact Info + Social Links) */}
           <div className="space-y-6">
             <div>
               <h3 className="text-xl font-bold mb-4">Contact Information</h3>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
                   <span>(+91) 8179831797</span>
                 </div>
-
                 <div className="flex items-center gap-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
                   <span>durgasaimukeshvantakula5764@gmail.com</span>
                 </div>
-
                 <div className="flex items-center gap-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
                   <span>Narsipatnam, Vishakapatnam</span>
                 </div>
               </div>
@@ -82,10 +107,10 @@ const Contact = () => {
                 <a href="www.linkedin.com/in/mukesh-vantakula" className="bg-secondary p-3 rounded-full text-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg>
                 </a>
-                <a href="#" className="bg-secondary p-3 rounded-full text-foreground hover:text-primary transition-colors" aria-label="Twitter">
+                {/* <a href="#" className="bg-secondary p-3 rounded-full text-foreground hover:text-primary transition-colors" aria-label="Twitter">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" /></svg>
-                </a>
-                <a href="#" className="bg-secondary p-3 rounded-full text-foreground hover:text-primary transition-colors" aria-label="Instagram">
+                </a> */}
+                <a href="https://www.instagram.com/mukesh_2_0_9_6/" className="bg-secondary p-3 rounded-full text-foreground hover:text-primary transition-colors" aria-label="Instagram">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
                 </a>
               </div>
